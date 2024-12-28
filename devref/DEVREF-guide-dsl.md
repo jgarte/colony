@@ -4,9 +4,18 @@ When making a general purpose DSL, like define-texture-map, first, design the
 class/struct/etc in memory representation of the information. Then, create a
 programmatic API that both the engine and the appdev will use to
 create/manipulate/destroy this information. Then create the "physical form" of
-the DSL the appdev will write. This form contains all the detail that the DSL
-form requires to specify all of the information. The DSL macro expander, often
-in terms of actual CL functions and a relatively small defmacro that invokes
+the DSL the appdev will write.
+
+```mermaid
+flowchart TD
+    A["Start: Make DSL"] --> B["Design Data Structure"]
+    B --> C["Develop Programmatic API"]
+    C --> D["Design DSL Syntax"]
+    D --> E["End: DSL Ready for Use"]
+```
+
+This form contains all the detail that the DSL form requires to specify all of the information. 
+The DSL macro expander, often in terms of actual CL functions and a relatively small defmacro that invokes
 then, will convert the DSL to the programmatic API.  If the physical form of
 the DSL is so complex that it has a "logical form" simplification, which is a
 DSL that is highly common to write, doesn't require the full specification of
